@@ -1,0 +1,64 @@
+<h5>Diretivas: Usando * and template</h5>
+
+<h4>Usando o *</h4>
+<ul>
+    <li *ngFor="let item of itens, let i = index">
+        {{ i }} - {{ item }}
+    </li>
+</ul>
+
+<h4>Removendo o * e usando o template</h4>
+
+<ul>
+    <li ng-template="ngFor let item of itens" >
+           {{ item }}
+     </li>
+</ul>
+
+
+<ul>
+     <ng-template ngFor [ngForOf]="itens" let-item >
+         <li>
+            {{ item }}
+         </li>
+      </ng-template>
+</ul>
+<!-- 
+<div class="container" [ngSwitch]="aba" >
+  <p *ngSwitchCase="'mapa'">Modo Mapa ativado</p>
+  <p *ngSwitchCase="'lista'">Modo Lista ativado</p>
+  <p *ngSwitchDefault>Home</p>
+</div> -->
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation" [class.active]="aba == 'home'" (click)="aba='home'">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+  </li>
+  <li class="nav-item" role="presentation" [class.active]="aba == 'mapa'" (click)="aba='mapa'">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+  </li>
+  <li class="nav-item" role="presentation" [class.active]="aba == 'lista'" (click)="aba='lista'">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+</div>
+
+<div class="container" [ngSwitch]="aba" >
+  <template [ngSwitchCase]="'mapa'">
+    <p>Modo Mapa ativado</p>
+  </template>    
+  
+  <template [ngSwitchCase]="'lista'" >
+    <p>Modo Lista ativado</p>
+  </template>
+  
+  <template [ngSwitchCase]="'home'" ngSwitchDefault>
+    <p>Home</p>
+  </template>
+
+</div>
